@@ -1,0 +1,27 @@
+---
+swagger: '2.0'
+info:
+  title: 'test spec'
+  description: 'Find all your aftersale tickets here.'
+definitions:
+  Model:
+
+    # ISSUE: removing this line fixes it.
+    required: ['created_at']
+
+    properties:
+      created_at: { type: 'string', format: 'date-time' }
+paths:
+  '/':
+    put:
+      responses:
+        '200':
+          description: 'success.'
+          schema: { '$ref': '#/definitions/Model' }
+      parameters:
+        - name: 'data'
+          in: 'body'
+          description: 'Authentication data'
+          required: true
+          schema: { '$ref': '#/definitions/Model' }
+
